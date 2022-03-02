@@ -4,7 +4,7 @@
 
    <master auto="start"/>
  <!-- Run the map server --> 
-    <node name="map_server" pkg="map_server" type="map_server" args="$(find nav2d)/maps/map1.yaml"/>
+    <node name="map_server" pkg="map_server" type="map_server" args="$(find nav2d)/maps/map_move.yaml"/>
 
  <!--- Run AMCL --> 
     <include file="$(find nav2d)/launch files/amcl.launch" />
