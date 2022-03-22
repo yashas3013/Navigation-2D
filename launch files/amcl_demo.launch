@@ -1,13 +1,13 @@
 <launch>
 
   <!-- Run the map server -->
-  <arg name="map_file" default="$(find nav2d)/maps/map1.yaml"/>
+  <arg name="map_file" default="$(find nav2d)/maps/map_move.yaml"/>
   <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
 
   <!--- Run AMCL -->
   <include file="$(find nav2d)/launch files/amcl.launch" />
 
   <!--- Run Move Base -->
-  <include file="$(find nav2d)/launch files/move_base.launch" />
+  <!-- <include file="$(find nav2d)/launch files/move_base.launch" /> -->
 
 </launch>

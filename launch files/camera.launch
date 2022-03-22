@@ -7,7 +7,7 @@
   <arg name="high_res_rgb" default="true"/>
   <arg name="cloud_input_ns" value="camera/rgb_downsampled"
        if="$(arg high_res_rgb)"/>
-  <arg name="cloud_input_ns" value="camera/rgb" unless="$(arg high_res_rgb)"/>
+  <arg name="cloud_input_ns" value="camera/color" unless="$(arg high_res_rgb)"/>
 
   <!-- Nodelet manager for this pipeline -->
   <node pkg="nodelet" type="nodelet" args="manager"
@@ -26,7 +26,7 @@
   <!-- The depth image is already rectified and registered
        to the camera optical frame, but stored in mm; convert it
        to meters -->
-  <node pkg="nodelet" type="nodelet" name="metric_rect" 
+    <node pkg="nodelet" type="nodelet" name="metric_rect" 
         args="load depth_image_proc/convert_metric record_player_manager --no-bond">
     <remap from="image_raw" to="camera/depth/image_raw"/>
     <remap from="image" to="camera/depth/image"/>
@@ -42,7 +42,7 @@
     <param name="height" value="960"/>
     <remap from="camera" to="camera/color"/>
     <remap from="camera_out" to="$(arg cloud_input_ns)"/>
-    <remap from="camera/color/image_raw" to="camera/color/image_rect_color"/>
+    <remap from="image_topic_2" to="camera/color/image_rect_color"/>
     <remap from="$(arg cloud_input_ns)/image_raw" to="$(arg cloud_input_ns)/image_rect_color"/>
   </node>
 
